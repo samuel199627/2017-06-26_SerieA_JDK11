@@ -3,11 +3,41 @@ package it.polito.tdp.seriea.model;
 public class Team {
 
 	private String team;
+	private int classifica;
+	private int tifosi;
 
 	public Team(String team) {
 		super();
 		this.team = team;
+		tifosi=1000;
+		classifica=0;
 	}
+	
+	
+
+	public int getClassifica() {
+		return classifica;
+	}
+
+
+
+	public void setClassifica(int classifica) {
+		this.classifica = classifica;
+	}
+
+
+
+	public int getTifosi() {
+		return tifosi;
+	}
+
+
+
+	public void setTifosi(int tifosi) {
+		this.tifosi = tifosi;
+	}
+
+
 
 	/**
 	 * @return the team

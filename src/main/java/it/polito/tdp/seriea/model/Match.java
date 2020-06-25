@@ -6,7 +6,6 @@ public class Match {
 
 	private int id;
 	private Season season;
-	private String div;
 	private LocalDate date;
 	private Team homeTeam;
 	private Team awayTeam;
@@ -28,11 +27,11 @@ public class Match {
 	 * @param ftag
 	 * @param ftr
 	 */
-	public Match(int id, Season season, String div, LocalDate date, Team homeTeam, Team awayTeam, int fthg, int ftag, String ftr) {
+	public Match(int id, Season season, LocalDate date, Team homeTeam, Team awayTeam, int fthg, int ftag, String ftr) {
 		super();
 		this.id = id;
 		this.season = season;
-		this.div = div;
+		
 		this.date = date;
 		this.homeTeam = homeTeam;
 		this.awayTeam = awayTeam;
@@ -55,12 +54,7 @@ public class Match {
 		return season;
 	}
 
-	/**
-	 * @return the div
-	 */
-	public String getDiv() {
-		return div;
-	}
+	
 
 	/**
 	 * @return the date
@@ -124,9 +118,7 @@ public class Match {
 	 * @param div
 	 * the div to set
 	 */
-	public void setDiv(String div) {
-		this.div = div;
-	}
+	
 
 	/**
 	 * @param date

@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.seriea.model.Model;
+import it.polito.tdp.seriea.model.Season;
+import it.polito.tdp.seriea.model.Team;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -23,10 +25,10 @@ public class FXMLController {
     private URL location;
 
     @FXML
-    private ChoiceBox<?> boxSquadra;
+    private ChoiceBox<Team> boxSquadra;
 
     @FXML
-    private ChoiceBox<?> boxStagione;
+    private ChoiceBox<Season> boxStagione;
 
     @FXML
     private Button btnCalcolaConnessioniSquadra;
@@ -42,17 +44,40 @@ public class FXMLController {
 
     @FXML
     void doAnalizzaSquadre(ActionEvent event) {
+    	txtResult.clear();
+    	txtResult.appendText(model.creaGrafo());
+    	
+    	boxSquadra.getItems().clear();
+    	boxSquadra.getItems().addAll(model.vertici());
+    	
 
     }
 
     @FXML
     void doCalcolaConnessioniSquadra(ActionEvent event) {
+    	txtResult.clear();
+    	Team selezionato=boxSquadra.getValue();
+    	if(selezionato==null) {
+    		txtResult.appendText("DEVI SELEZIONARE UN TEAM");
+    		return;
+    	}
+    	
+    	txtResult.appendText(model.calcolaConnessioni(selezionato));
+    	boxStagione.getItems().clear();
+    	boxStagione.getItems().addAll(model.ritornaStagioni());
 
     }
 
     @FXML
     void doSimulaTifosi(ActionEvent event) {
+    	txtResult.clear();
+    	Season selezionato=boxStagione.getValue();
+    	if(selezionato==null) {
+    		txtResult.appendText("DEVI SELEZIONARE UNA STAGIONE");
+    		return;
+    	}
 
+    	txtResult.appendText(model.simula(selezionato));
     }
 
     @FXML
